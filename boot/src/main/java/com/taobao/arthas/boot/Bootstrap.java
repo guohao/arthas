@@ -76,7 +76,7 @@ public class Bootstrap {
      * <pre>
      * The directory contains arthas-core.jar/arthas-client.jar/arthas-spy.jar.
      * 1. When use-version is not empty, try to find arthas home under ~/.arthas/lib
-     * 2. Try set the directory where arthas-boot.jar is located to arhtas home
+     * 2. Try set the directory where arthas-boot.jar is located to arthas home
      * 3. Try to download from maven repo
      * </pre>
      */
@@ -219,8 +219,7 @@ public class Bootstrap {
                 AnsiLog.info("arthas-boot version: " + arthasBootVersion);
             }
         }
-
-        String mavenMetaData = null;
+        String mavenMetaData=null;
 
         Bootstrap bootstrap = new Bootstrap();
 
@@ -253,9 +252,7 @@ public class Bootstrap {
         AnsiLog.debug("Repo mirror:" + bootstrap.getRepoMirror());
 
         if (bootstrap.isVersions()) {
-            if (mavenMetaData == null) {
-                mavenMetaData = DownloadUtils.readMavenMetaData(bootstrap.getRepoMirror(), bootstrap.isuseHttp());
-            }
+            mavenMetaData = DownloadUtils.readMavenMetaData(bootstrap.getRepoMirror(), bootstrap.isuseHttp());
             System.out.println(UsageRender.render(listVersions(mavenMetaData)));
             System.exit(0);
         }
@@ -372,9 +369,7 @@ public class Bootstrap {
                 localLastestVersion = versionList.get(versionList.size() - 1);
             }
 
-            if (mavenMetaData == null) {
-                mavenMetaData = DownloadUtils.readMavenMetaData(bootstrap.getRepoMirror(), bootstrap.isuseHttp());
-            }
+            mavenMetaData = DownloadUtils.readMavenMetaData(bootstrap.getRepoMirror(), bootstrap.isuseHttp());
 
             String remoteLastestVersion = DownloadUtils.readMavenReleaseVersion(mavenMetaData);
 
@@ -523,7 +518,7 @@ public class Bootstrap {
     private static void verifyArthasHome(String arthasHome) {
         File home = new File(arthasHome);
         if (home.isDirectory()) {
-            String fileList[] = { "arthas-core.jar", "arthas-agent.jar", "arthas-spy.jar" };
+            String[] fileList = {"arthas-core.jar", "arthas-agent.jar", "arthas-spy.jar"};
 
             for (String fileName : fileList) {
                 if (!new File(home, fileName).exists()) {

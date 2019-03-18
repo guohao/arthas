@@ -30,5 +30,5 @@ if [[ ! -x ${ARTHAS_LIB_HOME} ]]; then
 
 fi
 
-echo "install to local successed."
+echo "install to local succeed."
 

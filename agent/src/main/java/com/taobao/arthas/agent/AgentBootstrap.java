@@ -98,7 +98,7 @@ public class AgentBootstrap {
             // 传递的args参数分两个部分:agentJar路径和agentArgs, 分别是Agent的JAR包路径和期望传递到服务端的参数
             int index = args.indexOf(';');
             String agentJar = args.substring(0, index);
-            final String agentArgs = args.substring(index, args.length());
+            final String agentArgs = args.substring(index);
 
             File agentJarFile = new File(agentJar);
             if (!agentJarFile.exists()) {
